@@ -32,4 +32,12 @@ describe('ClientConfig', () => {
     expect(client.secret).toEqual('secret');
   });
 
+  test('define #env', () => {
+    expect(client.env).toEqual('production');
+
+    client.env = 'sandbox';
+
+    expect(client.env).toEqual('sandbox');
+  });
+
 });

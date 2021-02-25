@@ -16,4 +16,12 @@ describe('GetNet', () => {
     });
   });
 
+  describe('.useEnv', () => {
+    test('defines the getnet api`s environment', () => {
+      expect(getnet.client.env).toEqual('production');
+      getnet.useEnv('sandbox');
+      expect(getnet.client.env).toEqual('sandbox');
+    });
+  })
+
 });

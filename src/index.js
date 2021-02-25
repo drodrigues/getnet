@@ -8,7 +8,10 @@ export const config = (sellerId, clientId, secret) => {
   client.secret = secret;
 }
 
+export const useEnv = env => client.env = env;
+
 export default {
   config,
   client,
+  useEnv,
 };

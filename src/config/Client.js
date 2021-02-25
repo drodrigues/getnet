@@ -3,6 +3,7 @@ export class ClientConfig {
   #sellerId = null;
   #clientId = null;
   #secret = null;
+  #env = 'production';
 
   get sellerId() {
     return this.#sellerId;
@@ -26,6 +27,14 @@ export class ClientConfig {
 
   set secret(value) {
     this.#secret = value;
+  }
+
+  get env() {
+    return this.#env;
+  }
+
+  set env(value) {
+    this.#env = value;
   }
 
 }
