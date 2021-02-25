@@ -1,7 +1,7 @@
 import axios from './Axios';
 
 import {
-  setupClient
+  setupClient,
 } from './../test/Helpers';
 
 describe('Axios', () => {
