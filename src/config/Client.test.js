@@ -40,4 +40,11 @@ describe('ClientConfig', () => {
     expect(client.env).toEqual('sandbox');
   });
 
+  test('encodes as base64 the clientId and secret (#basicAuthtoken)', () => {
+    client.clientId = 'clientId';
+    client.secret = 'secret';
+
+    expect(client.basicAuthtoken).toEqual('Y2xpZW50SWQ6c2VjcmV0');
+  });
+
 });

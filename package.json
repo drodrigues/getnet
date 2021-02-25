@@ -10,7 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.21.1"
+    "axios": "^0.21.1",
+    "camelcase-keys": "^6.2.2",
+    "regenerator-runtime": "^0.13.7",
+    "snakecase-keys": "^3.2.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.0",

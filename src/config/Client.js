@@ -37,6 +37,13 @@ export class ClientConfig {
     this.#env = value;
   }
 
+  get basicAuthtoken() {
+    const clientSecret = `${this.#clientId}:${this.#secret}`;
+    const buffer = new Buffer.from(clientSecret);
+
+    return buffer.toString("base64");
+  }
+
 }
 
 export default class Singleton {

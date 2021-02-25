@@ -22,6 +22,6 @@ describe('GetNet', () => {
       getnet.useEnv('sandbox');
       expect(getnet.client.env).toEqual('sandbox');
     });
-  })
+  });
 
 });
