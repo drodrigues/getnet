@@ -7,9 +7,14 @@ import qs from 'qs';
 import getnetConfig from './Getnet';
 import Client from './Client';
 
+import {
+  UnauthorizedError,
+  InvalidRequest,
+} from './../concerns/Exceptions';
+
 const client = new Client().getInstance();
 
-const authInstance = axios.create({ adapter });
+export const authInstance = axios.create({ adapter });
 const instance = axios.create({ adapter });
 
 const getAccessToken = async () => {
@@ -25,7 +30,6 @@ const getAccessToken = async () => {
 
   try {
     const { data } = await authInstance.post('/auth/oauth/v2/token', params, {headers});
-
     return data.accessToken;
   } catch(ex) {
     return null;
@@ -42,7 +46,11 @@ const responseCamelcaseInterceptor = response => {
 
 const requestInterceptor = config => {
   if (config.data) {
-    config.data = qs.stringify(snakeCaseKeys(config.data, {deep: true}));
+    config.data = snakeCaseKeys(config.data, {deep: true});
+
+    if (config.headers['content-type'] == 'application/x-www-form-urlencoded') {
+      config.data = qs.stringify(config.data);
+    }
   }
 
   config.baseURL = getnetConfig[client.env].endpoint;
@@ -50,10 +58,18 @@ const requestInterceptor = config => {
   return config;
 }
 
+const responseErrorInterceptor = error => {
+  if (error.response) {
+    error.response.data = camelcaseKeys(error.response.data, {deep: true});
+  }
+
+  return Promise.reject(error);
+}
+
 authInstance.interceptors.request.use(requestInterceptor);
 authInstance.interceptors.response.use(responseCamelcaseInterceptor);
 
-instance.interceptors.response.use(responseCamelcaseInterceptor);
+instance.interceptors.response.use(responseCamelcaseInterceptor, responseErrorInterceptor);
 instance.interceptors.request.use(requestInterceptor);
 instance.interceptors.request.use(async config => {
   const { sellerId } = client;
