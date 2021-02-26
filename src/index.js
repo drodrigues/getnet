@@ -4,6 +4,7 @@ import { Client } from './config';
 
 export { default as Card } from './Card';
 export { default as Safebox } from './Safebox';
+export { default as Payment } from './Payment';
 
 const client = new Client().getInstance();
 
