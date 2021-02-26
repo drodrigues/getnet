@@ -1,0 +1,10 @@
+{
+  "message": "string",
+  "name": "string",
+  "status_code": 404,
+  "details": [
+    {
+      "descriptionDetail": "\"card_id\" was not found"
+    }
+  ]
+}

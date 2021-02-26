@@ -23,7 +23,15 @@ export default class Safebox {
     } catch (ex) {
       throw handleError(ex);
     }
+  }
 
+  static async findOne(cardId) {
+    try {
+      const { data } = await request.get(`/v1/cards/${cardId}`);
+      return data;
+    } catch (ex) {
+      throw handleError(ex);
+    }
   }
 
 }

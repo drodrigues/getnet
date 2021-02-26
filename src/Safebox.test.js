@@ -102,4 +102,41 @@ describe('Safebox', () => {
     });
   });
 
+  describe('.findOne', () => {
+    const cardId = 'e8ad2ae4-9e3e-4532-998f-1a5a11e56e58';
+
+    describe('when the card was not found', () => {
+      test('return the notFound', async () => {
+        mockRequest('onGet', `/v1/cards/${cardId}`, 404, 'SandboxFindOne404Request.json');
+
+        try {
+          await Safebox.findOne(cardId);
+        } catch(ex) {
+          expect(ex.httpStatus).toEqual(404);
+          expect(ex.message).toEqual('"card_id" was not found');
+        }
+      });
+    });
+
+    describe('when the card was found', () => {
+      test('return the card`s info', async () => {
+        mockRequest('onGet', `/v1/cards/${cardId}`, 200, 'SandboxFindOne200Request.json');
+        const card = await Safebox.findOne(cardId);
+
+        expect(card.cardId).toEqual(cardId);
+        expect(card.lastFourDigits).toEqual('1212');
+        expect(card.expirationMonth).toEqual('12');
+        expect(card.expirationYear).toEqual('20');
+        expect(card.brand).toEqual('Mastercard');
+        expect(card.cardholderName).toEqual('JOAO DA SILVA');
+        expect(card.customerId).toEqual('customer_21081826');
+        expect(card.numberToken).toEqual('dfe05208b105578c070f806c80abd3af09e246827d29b866cf4ce16c205849977c9496cbf0d0234f42339937f327747075f68763537b90b31389e01231d4d13c');
+        expect(card.usedAt).toEqual('2017-04-19T16:30:30Z');
+        expect(card.createdAt).toEqual('2017-04-19T16:30:30Z');
+        expect(card.updatedAt).toEqual('2017-04-19T16:30:30Z');
+        expect(card.status).toEqual('active');
+      });
+    });
+  });
+
 });
