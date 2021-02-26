@@ -34,4 +34,14 @@ export default class Safebox {
     }
   }
 
+  static async remove(cardId) {
+    try {
+      const { data } = await request.delete(`/v1/cards/${cardId}`);
+      return true;
+    } catch (ex) {
+      throw handleError(ex);
+    }
+
+  }
+
 }

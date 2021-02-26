@@ -24,15 +24,17 @@ export const readFixture = filename => {
   return fixture;
 }
 
-export const mockRequest = (method, url, status, fixture, data = null) => {
+export const mockRequest = (method, url, status, fixture = null, data = null) => {
   const mockAuth = new MockAdapter(requestAuth);
   const authTokenRequest = readFixture('AuthTokenRequest.json');
   mockAuth.onPost('/auth/oauth/v2/token').reply(200, authTokenRequest);
 
   const mock = new MockAdapter(request);
+  const fixtureBody = fixture ? readFixture(fixture) : null;
+
   if (data) {
-    mock[method](url, snakeCaseKeys(data)).reply(status, readFixture(fixture))
+    mock[method](url, snakeCaseKeys(data)).reply(status,fixtureBody )
   } else {
-    mock[method](url).reply(status, readFixture(fixture))
+    mock[method](url).reply(status, fixtureBody)
   }
 }

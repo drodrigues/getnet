@@ -139,4 +139,31 @@ describe('Safebox', () => {
     });
   });
 
+  describe('.remove', () => {
+    const cardId = 'e8ad2ae4-9e3e-4532-998f-1a5a11e56e58';
+
+    describe('when the card was not found', () => {
+      test('return the notFound', async () => {
+        mockRequest('onDelete', `/v1/cards/${cardId}`, 404, 'SandboxFindOne404Request.json');
+
+        try {
+          await Safebox.remove(cardId);
+        } catch(ex) {
+          expect(ex.httpStatus).toEqual(404);
+          expect(ex.message).toEqual('"card_id" was not found');
+        }
+      });
+    });
+
+    describe('when the card was found', () => {
+      test('return true', async () => {
+        mockRequest('onDelete', `/v1/cards/${cardId}`, 204);
+
+        const wasRemoved = await Safebox.remove(cardId);
+
+        expect(wasRemoved).toEqual(true);
+      });
+    });
+  });
+
 });
