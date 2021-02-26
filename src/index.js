@@ -3,6 +3,7 @@ import 'regenerator-runtime/runtime';
 import { Client } from './config';
 
 export { default as Card } from './Card';
+export { default as Safebox } from './Safebox';
 
 const client = new Client().getInstance();
 
