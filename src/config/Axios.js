@@ -53,6 +53,10 @@ const requestInterceptor = config => {
     }
   }
 
+  if (config.params) {
+    config.params = snakeCaseKeys(config.params, {deep: true});
+  }
+
   config.baseURL = getnetConfig[client.env].endpoint;
 
   return config;

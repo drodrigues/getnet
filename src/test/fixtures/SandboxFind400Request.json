@@ -1,0 +1,10 @@
+{
+  "message": "string",
+  "name": "string",
+  "status_code": 400,
+  "details": [
+    {
+      "descriptionDetail": "\"customer_id\" is required"
+    }
+  ]
+}

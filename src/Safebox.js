@@ -15,4 +15,15 @@ export default class Safebox {
     }
   }
 
+  static async findAllByCustomerId(customerId, status = 'all') {
+    try {
+      const params = { customerId, status};
+      const { data } = await request.get('/v1/cards', {params});
+      return data.cards;
+    } catch (ex) {
+      throw handleError(ex);
+    }
+
+  }
+
 }

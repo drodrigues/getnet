@@ -35,6 +35,16 @@ export class UnauthorizedError extends BaseError {
   }
 }
 
+export class NotFoundError extends BaseError {
+  constructor(details) {
+    super(details);
+  }
+
+  get httpStatus() {
+    return 404;
+  }
+}
+
 export const handleError = error => {
   const { response } = error;
 
@@ -42,13 +52,16 @@ export const handleError = error => {
     switch (response.status) {
       case 400:
         return new InvalidRequest(response.data.details);
-        break;
-       case 401:
+      break;
+      case 401:
         return new UnauthorizedError(response.data.details);
-        break;
+      break;
+      case 404:
+        return new NotFoundError(response.data.details);
+      break;
       default:
         return new GenericError(response.data.details);
-        break
+      break
     }
   } else {
     return error;
