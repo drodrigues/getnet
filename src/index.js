@@ -2,6 +2,8 @@ import 'regenerator-runtime/runtime';
 
 import { Client } from './config';
 
+export { default as Card } from './Card';
+
 const client = new Client().getInstance();
 
 const config = (sellerId, clientId, secret) => {
