@@ -15,4 +15,13 @@ export default class Card {
     }
   }
 
+  static async verification(params = {}) {
+     try {
+      const { data } = await request.post('/v1/cards/verification', params);
+      return data;
+    } catch (ex) {
+      throw handleError(ex);
+    }
+  }
+
 }
