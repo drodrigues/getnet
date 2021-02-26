@@ -66,7 +66,7 @@ describe('Safebox', () => {
         status: 'all',
       };
 
-      describe('when the customerId was not found', () => {
+      describe('and the customerId was not found', () => {
         test('return the notFound', async () => {
           mockRequest('onGet', '/v1/cards', 404, 'SandboxFind404Request.json', {params});
 
@@ -79,7 +79,7 @@ describe('Safebox', () => {
         });
       });
 
-      describe('when the customerId was found', () => {
+      describe('and the customerId was found', () => {
         test('return the cards', async () => {
           mockRequest('onGet', '/v1/cards', 200, 'SandboxFind200Request.json', {params});
           const cards = await Safebox.findAllByCustomerId(params.customerId);
