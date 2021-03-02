@@ -1,17 +1,17 @@
 # Getnet
 
-A library/abstraction in Node.JS to implements the Getnet's services. 
+A library/abstraction in Node.JS to implements the Getnet's services.
 https://developers.getnet.com.br/api
 
 ### Install
 
 ```sh
-npm install getnet
+npm install @threadbrasil/getnet
 ```
 or via YARN
 
 ```sh
-yarn install getnet
+yarn install @threadbrasil/getnet
 ```
 
 ### Usage
@@ -22,14 +22,14 @@ import getnet, { Card, Safebox, Payment } from 'getnet';
 getnet.config(sellerId, clientId, secret);
 getnet.useEnv('sandbox'); //sandbox, homolog or production
 
-//Card token generation 
+//Card token generation
 //(https://developers.getnet.com.br/api#tag/Tokenizacao)
 const numberToken = await Card.asToken({
   cardNumber: '5155901222280001',
   customerId: 'customer_21081826',
 });
 
-//Card verification 
+//Card verification
 //(https://developers.getnet.com.br/api#tag/Pagamento%2Fpaths%2F~1v1~1cards~1verification%2Fpost)
 const {
   status,
@@ -165,7 +165,7 @@ const {
       expirationMonth: "12",
       expirationYear: "20"
     }
-  }     
+  }
 });
 
 
