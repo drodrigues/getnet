@@ -166,4 +166,24 @@ describe('Payment', () => {
     });
   });
 
+  describe('.cancelRequestOnCredit', () => {
+    const paymentId = 'f3b54da1-0753-4dcf-ac92-48721d2ff553';
+    const cancelCustomKey = '4ec33ee18f9e45bfb73c5c30667f9006';
+    const cancelAmount = 100;
+
+    const params = {
+      paymentId,
+      cancelAmount,
+      cancelCustomKey,
+    }
+
+    test('return success', async () => {
+      mockRequest('onPost', '/v1/payments/cancel/request', 200, 'PaymentCancelRequest200.json', params);
+
+      const wasCanceled = await Payment.cancelRequestOnCredit(paymentId, cancelAmount, cancelCustomKey);
+
+      expect(wasCanceled).toEqual(true);
+    });
+  });
+
 });
