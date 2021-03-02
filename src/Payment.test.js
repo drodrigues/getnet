@@ -164,7 +164,6 @@ describe('Payment', () => {
 
       expect(wasCanceled).toEqual(true);
     });
-
   });
 
 });
