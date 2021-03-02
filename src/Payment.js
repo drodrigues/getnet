@@ -11,7 +11,6 @@ export default class Payment {
       const { data } = await request.post('/v1/payments/credit', params);
       return data;
     } catch (ex) {
-      console.log(ex.response.data);
       throw handleError(ex);
     }
   }
