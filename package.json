@@ -1,13 +1,17 @@
 {
   "name": "getnet",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A library/abstraction in Node.JS to implements the Getnet's services.",
   "main": "index.js",
   "scripts": {
     "build": "rm -rf lib && node_modules/.bin/babel src -d lib --ignore '**/*.test.js,src/test' --verbose",
     "test": "NODE_ENV=test ./node_modules/.bin/jest --passWithNoTests"
   },
-  "author": "",
+  "author": "Danilo Rodrigues <danilo.rodrigues@threadbrasil.com.br> (http://threadbrasil.com.br)",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/drodrigues/getnet"
+  },
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",
@@ -49,5 +53,8 @@
       ".git",
       "lib"
     ]
+  },
+  "bugs": {
+    "url": "https://github.com/drodrigues/getnet/issues"
   }
 }
