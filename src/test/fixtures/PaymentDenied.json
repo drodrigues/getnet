@@ -1,0 +1,10 @@
+{
+  "message": "string",
+  "name": "string",
+  "status_code": 402,
+  "details": [
+    {
+      "descriptionDetail": "\"payment\" was denied"
+    }
+  ]
+}

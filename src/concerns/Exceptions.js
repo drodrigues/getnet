@@ -45,6 +45,16 @@ export class NotFoundError extends BaseError {
   }
 }
 
+export class PaymentDeniedError extends BaseError {
+  constructor(details) {
+    super(details);
+  }
+
+  get httpStatus() {
+    return 402;
+  }
+}
+
 export const handleError = error => {
   const { response } = error;
 
@@ -55,6 +65,9 @@ export const handleError = error => {
       break;
       case 401:
         return new UnauthorizedError(response.data.details);
+      break;
+      case 402:
+        return new PaymentDeniedError(response.data.details);
       break;
       case 404:
         return new NotFoundError(response.data.details);
