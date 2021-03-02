@@ -6,12 +6,12 @@ https://developers.getnet.com.br/api
 ### Install
 
 ```sh
-npm install node-getnet
+npm install @threadbrasil/getnet
 ```
 or via YARN
 
 ```sh
-yarn install node-getnet
+yarn install @threadbrasil/getnet
 ```
 
 ### Usage
