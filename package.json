@@ -1,5 +1,5 @@
 {
-  "name": "@threadbrasil/getnet",
+  "name": "node-getnet",
   "version": "1.0.1",
   "description": "A library/abstraction in Node.JS to implements the Getnet's services.",
   "main": "index.js",
