@@ -1,6 +1,6 @@
 {
   "name": "getnet",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A library/abstraction in Node.JS to implements the Getnet's services.",
   "main": "index.js",
   "scripts": {
@@ -12,6 +12,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "camelcase-keys": "^6.2.2",
+    "qs": "^6.5.2",
     "regenerator-runtime": "^0.13.7",
     "snakecase-keys": "^3.2.1"
   },
