@@ -1,7 +1,7 @@
 {
   "name": "getnet",
   "version": "1.0.0",
-  "description": "",
+  "description": "A library/abstraction in Node.JS to implements the Getnet's services.",
   "main": "index.js",
   "scripts": {
     "build": "rm -rf lib && node_modules/.bin/babel src -d lib --ignore '**/*.test.js,src/test' --verbose",
