@@ -15,4 +15,15 @@ export default class Payment {
     }
   }
 
+  static async cancelCredit(paymentId) {
+    try {
+      const { data } = await request.post(`/v1/payments/credit/${paymentId}/cancel`);
+      return data.status.toLowerCase() == 'canceled';
+    } catch (ex) {
+      console.log(ex);
+      throw handleError(ex);
+    }
+
+  }
+
 }

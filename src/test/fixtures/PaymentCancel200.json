@@ -1,0 +1,12 @@
+{
+  "payment_id": "f3b54da1-0753-4dcf-ac92-48721d2ff553",
+  "seller_id": "8f840ea0-b7d1-42f5-ad78-5a5521e3125f",
+  "amount": 500000,
+  "currency": "BRL",
+  "order_id": "pre-auth-order-204",
+  "status": "CANCELED",
+  "credit_cancel": {
+    "canceled_at": "2018-07-22T18:47:32.270Z",
+    "message": "Credit transaction cancelled successfully"
+  }
+}

@@ -154,4 +154,17 @@ describe('Payment', () => {
     });
   });
 
+  describe('.cancelCredit', () => {
+    const paymentId = 'f3b54da1-0753-4dcf-ac92-48721d2ff553';
+
+    test('return success', async () => {
+      mockRequest('onPost', `/v1/payments/credit/${paymentId}/cancel`, 200, 'PaymentCancel200.json');
+
+      const wasCanceled = await Payment.cancelCredit(paymentId);
+
+      expect(wasCanceled).toEqual(true);
+    });
+
+  });
+
 });
