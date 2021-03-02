@@ -1,6 +1,6 @@
 {
-  "name": "@threadbrasil/getnet",
-  "version": "1.0.1",
+  "name": "getnet",
+  "version": "1.0.0",
   "description": "A library/abstraction in Node.JS to implements the Getnet's services.",
   "main": "index.js",
   "scripts": {
@@ -27,7 +27,7 @@
   },
   "jest": {
     "setupFilesAfterEnv": [
-      "<rootDir>/src/test/  JestSetup.js"
+      "<rootDir>/src/test/JestSetup.js"
     ],
     "testPathIgnorePatterns": [
       "<rootDir>/lib/",
